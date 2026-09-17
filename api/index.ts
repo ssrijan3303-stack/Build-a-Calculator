@@ -31,7 +31,6 @@ function verifyAdminToken(token: string | undefined): boolean {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS headers enable karein
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -45,12 +44,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const { url = '' } = req;
 
   // 1. Health check
-  if (url.includes('/api/health')) {
+  if (url.includes('health')) {
     return res.status(200).json({ status: 'ok', service: 'SrijanTech Vercel API' });
   }
 
   // 2. Founder Photo Get
-  if (url.includes('/api/founder-photo') && req.method === 'GET') {
+  if (url.includes('founder-photo') && !url.includes('upload') && req.method === 'GET') {
     let photoUrl = '/images/founder/srijan-singh-founder.jpg';
     if (supabaseServer) {
       try {
@@ -64,7 +63,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // 3. Founder Photo Upload
-  if (url.includes('/api/upload-founder-photo') && req.method === 'POST') {
+  if (url.includes('upload-founder-photo') && req.method === 'POST') {
     const authHeader = req.headers.authorization;
     const adminHeader = req.headers['x-admin-token'] as string;
     const token = authHeader?.startsWith('Bearer ') ? authHeader.slice(7) : adminHeader;
@@ -126,6 +125,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
   }
 
-  // Default fallback for unmatched routes
-  return res.status(404).json({ error: 'API route not found on Vercel handler.' });
+  return res.status(404).json({ error: 'API route not found on Vercel handler.', receivedUrl: url });
 }
