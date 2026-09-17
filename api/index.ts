@@ -9,10 +9,8 @@ const AUTHORIZED_ADMIN_EMAILS = [
 ];
 
 const SERVER_ADMIN_SECRET = process.env.ADMIN_SECRET || 'srijantech_executive_sec_varanasi_2026';
-
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || '';
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || '';
-
 const supabaseServer = SUPABASE_URL && SUPABASE_KEY ? createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
 function verifyAdminToken(token: string | undefined): boolean {
@@ -33,22 +31,16 @@ function verifyAdminToken(token: string | undefined): boolean {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization, x-admin-token');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-admin-token');
 
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return res.status(200).end();
   }
 
   const { url = '' } = req;
 
-  // 1. Health check
-  if (url.includes('health')) {
-    return res.status(200).json({ status: 'ok', service: 'SrijanTech Vercel API' });
-  }
-
-  // 2. Founder Photo Get
+  // 1. Founder Photo Get
   if (url.includes('founder-photo') && !url.includes('upload') && req.method === 'GET') {
     let photoUrl = '/images/founder/srijan-singh-founder.jpg';
     if (supabaseServer) {
@@ -62,7 +54,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ url: photoUrl, status: 'permanent' });
   }
 
-  // 3. Founder Photo Upload
+  // 2. Founder Photo Upload
   if (url.includes('upload-founder-photo') && req.method === 'POST') {
     const authHeader = req.headers.authorization;
     const adminHeader = req.headers['x-admin-token'] as string;
@@ -125,5 +117,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
   }
 
-  return res.status(404).json({ error: 'API route not found on Vercel handler.', receivedUrl: url });
+  return res.status(404).json({ error: 'API route not found.', receivedUrl: url });
 }
