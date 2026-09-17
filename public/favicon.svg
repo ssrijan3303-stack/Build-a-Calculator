@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="st-grad-primary" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <linearGradient id="st-grad-accent" x1="16" y1="12" x2="48" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded Base Badge -->
+  <rect width="64" height="64" rx="16" fill="#0B0F19" />
+  <rect x="0.5" y="0.5" width="63" height="63" rx="15.5" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" />
+  
+  <!-- Architectural Geometric "S" + Circuit Tech Node -->
+  <!-- Top arc loop of S -->
+  <path d="M44 20C44 15.58 40.42 12 36 12H24C18.48 12 14 16.48 14 22C14 27.52 18.48 32 24 32H38C43.52 32 48 36.48 48 42C48 47.52 43.52 52 38 52H24C19.58 52 16 48.42 16 44" 
+        stroke="url(#st-grad-primary)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Modern Tech Circuit Dot / Core Node -->
+  <circle cx="24" cy="22" r="3.5" fill="#38BDF8" />
+  <circle cx="38" cy="42" r="3.5" fill="#818CF8" />
+  <path d="M26 32H36" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+</svg>

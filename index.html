@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SrijanTech - Digital Solutions & Web Engineering | Varanasi</title>
+    <meta name="description" content="Premium technology and digital solutions company founded by Srijan Singh in Varanasi, Uttar Pradesh, India. Modern website development, web applications, e-commerce, and maintenance." />
+    <meta name="keywords" content="SrijanTech, Web Development in Varanasi, Website Development Company in Varanasi, Web Application Development in Varanasi, E-Commerce Development in Varanasi, Website Maintenance in Varanasi, Digital Solutions in Varanasi, Srijan Singh" />
+    <meta name="author" content="Srijan Singh" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SrijanTech - Digital Solutions & Web Engineering" />
+    <meta property="og:description" content="Turning Ideas Into Powerful Digital Experiences. Professional website and software engineering from Varanasi, India." />
+    <meta property="og:locale" content="en_IN" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SrijanTech - Digital Solutions & Web Engineering" />
+    <meta name="twitter:description" content="Turning Ideas Into Powerful Digital Experiences. Founded by Srijan Singh in Varanasi." />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Instant Theme Initialization Script (Prevents Flash) -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('srijantech_theme');
+          var theme = stored === 'light' ? 'light' : 'dark';
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
+    
+    <!-- Structured Data / LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "SrijanTech",
+      "founder": {
+        "@type": "Person",
+        "name": "Srijan Singh"
+      },
+      "description": "Technology and digital solutions company providing modern website development, web application engineering, e-commerce solutions, and digital transformation.",
+      "url": "https://srijantech.in",
+      "telephone": "+917269068483",
+      "email": "mystoreorder0004@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Varanasi",
+        "addressRegion": "Uttar Pradesh",
+        "addressCountry": "IN"
+      },
+      "openingHours": "Mo-Sa 09:00-19:00",
+      "priceRange": "₹₹"
+    }
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

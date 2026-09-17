@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* --------------------------------------------------------------------------
+   SrijanTech Adaptive Theme Architecture (Dark & Light Mode)
+   Enables complete, consistent theme switching across all components,
+   cards, hero, navbar, modals, tables, dashboards, and forms.
+   -------------------------------------------------------------------------- */
+
+:root,
+html.dark {
+  color-scheme: dark;
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
+  --bg-card: #0f172a;
+  --bg-input: #020617;
+  --border-subtle: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f8fafc;
+}
+
+html.light,
+html:not(.dark) {
+  color-scheme: light;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --border-subtle: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --color-slate-950: #f8fafc;
+  --color-slate-900: #ffffff;
+  --color-slate-800: #e2e8f0;
+  --color-slate-700: #cbd5e1;
+  --color-slate-600: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-400: #475569;
+  --color-slate-300: #334155;
+  --color-slate-200: #1e293b;
+  --color-slate-100: #0f172a;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--color-slate-950);
+  color: var(--color-slate-100);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100vh;
+}
+
+/* Light mode specific element adaptations */
+html.light,
+html:not(.dark) {
+  /* Headings with text-white should become deep charcoal in light mode */
+  h1.text-white,
+  h2.text-white,
+  h3.text-white,
+  h4.text-white,
+  h5.text-white,
+  h6.text-white {
+    color: #0f172a !important;
+  }
+
+  /* Form inputs in light mode */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  textarea,
+  select {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  /* Keep text white on primary colored buttons (gradients, solid blue/cyan/emerald/rose/amber) */
+  button[class*="from-sky-"],
+  button[class*="from-cyan-"],
+  button[class*="from-blue-"],
+  button[class*="bg-blue-"],
+  button[class*="bg-cyan-600"],
+  button[class*="bg-emerald-"],
+  button[class*="bg-rose-"],
+  button[class*="bg-purple-"],
+  .bg-blue-600,
+  .bg-cyan-600,
+  .bg-emerald-600,
+  .bg-rose-600,
+  .bg-sky-600,
+  a[class*="from-sky-"],
+  a[class*="bg-blue-"] {
+    color: #ffffff !important;
+  }
+
+  button[class*="from-sky-"] *,
+  button[class*="bg-blue-"] *,
+  button[class*="bg-cyan-600"] * {
+    color: #ffffff !important;
+  }
+
+  /* Navigation bar in light mode */
+  header {
+    background-color: rgba(255, 255, 255, 0.88) !important;
+    border-bottom-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  header nav {
+    background-color: rgba(241, 245, 249, 0.9) !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Secondary / Slate buttons in light mode */
+  button.bg-slate-800,
+  button.bg-slate-900,
+  button[class*="bg-slate-800"],
+  button[class*="bg-slate-900"] {
+    color: #1e293b !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Modals in light mode */
+  .fixed.inset-0.bg-slate-950\/80,
+  .fixed.inset-0.bg-slate-950\/70,
+  .fixed.inset-0.bg-black\/80 {
+    background-color: rgba(15, 23, 42, 0.5) !important;
+  }
+
+  /* Tables in light mode */
+  table th {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  table td {
+    border-color: #f1f5f9 !important;
+    color: #1e293b !important;
+  }
+
+  /* Card drop shadows for elevation in light mode */
+  .rounded-2xl,
+  .rounded-3xl {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  }
+}
